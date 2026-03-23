@@ -1,0 +1,114 @@
+import java.util.Scanner;
+
+class CustomStack {
+    private int[] arr;
+    private int top;
+    private int capacity;
+
+    // Constructor to initialize the stack
+    public CustomStack(int size) {
+        this.capacity = size;
+        this.arr = new int[capacity];
+        this.top = -1;
+    }
+
+    public void push(int element) {
+        if (top == capacity - 1) {
+            System.out.println("Stack is full! Cannot push.");
+            return;
+        }
+        arr[++top] = element;
+        System.out.println("Pushed " + element + " to stack.");
+    }
+
+    public void pop() {
+        if (top == -1) {
+            System.out.println("Stack is empty! Cannot pop.");
+            return;
+        }
+        System.out.println("Popped " + arr[top--] + " from stack.");
+    }
+
+    public void display() {
+        if (top == -1) {
+            System.out.println("Stack is empty.");
+            return;
+        }
+        System.out.print("Elements: ");
+        for (int i = 0; i <= top; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+
+    // Helper method to get the current number of elements
+    public int getSize() {
+        return top + 1;
+    }
+}
+
+public class StackManager {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        CustomStack stack1 = new CustomStack(10);
+        CustomStack stack2 = new CustomStack(10);
+
+        while (true) {
+            System.out.println("\n--- Stack Menu ---");
+            System.out.println("1. Push to Stack 1");
+            System.out.println("2. Pop from Stack 1");
+            System.out.println("3. Display Stack 1");
+            System.out.println("4. Push to Stack 2");
+            System.out.println("5. Pop from Stack 2");
+            System.out.println("6. Display Stack 2");
+            System.out.println("7. Exit");
+            System.out.print("Choose an option: ");
+            
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter value to push: ");
+                    stack1.push(scanner.nextInt());
+                    checkSizeEquality(stack1, stack2);
+                    break;
+                case 2:
+                    stack1.pop();
+                    checkSizeEquality(stack1, stack2);
+                    break;
+                case 3:
+                    System.out.print("Stack 1 ");
+                    stack1.display();
+                    break;
+                case 4:
+                    System.out.print("Enter value to push: ");
+                    stack2.push(scanner.nextInt());
+                    checkSizeEquality(stack1, stack2);
+                    break;
+                case 5:
+                    stack2.pop();
+                    checkSizeEquality(stack1, stack2);
+                    break;
+                case 6:
+                    System.out.print("Stack 2 ");
+                    stack2.display();
+                    break;
+                case 7:
+                    System.out.println("Exiting...");
+                    scanner.close();
+                    return;
+                default:
+                    System.out.println("Invalid choice. Try again.");
+            }
+        }
+    }
+
+    // Method to check and print if stack sizes are equal
+    private static void checkSizeEquality(CustomStack s1, CustomStack s2) {
+        int size1 = s1.getSize();
+        int size2 = s2.getSize();
+        if (size1 == size2) {
+            System.out.println("\n*** NOTICE: Both stacks now have an equal number of elements (" + size1 + " elements each). ***");
+        }
+    }
+}
