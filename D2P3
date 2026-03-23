@@ -1,0 +1,56 @@
+class Box {
+    double width;
+    double height;
+    double length;
+
+    // Constructor 1: Default constructor
+    public Box() {
+        width = 0;
+        height = 0;
+        length = 0;
+    }
+
+    // Constructor 2: Initialize all three dimensions
+    public Box(double w, double h, double l) {
+        width = w;
+        height = h;
+        length = l;
+    }
+
+    // Constructor 3: Initialize a cube (all sides equal)
+    public Box(double side) {
+        width = side;
+        height = side;
+        length = side;
+    }
+
+    // Method to calculate and return volume
+    public double volume() {
+        return width * height * length;
+    }
+
+    // Method to check if two Box objects are identical
+    public boolean equals(Box b) {
+        if (this.width == b.width && this.height == b.height && this.length == b.length) {
+            return true;
+        }
+        return false;
+    }
+}
+
+public class BoxMain {
+    public static void main(String[] args) {
+        // Create objects using constructor overloading
+        Box box1 = new Box(10.0, 5.0, 3.0);
+        Box box2 = new Box(10.0, 5.0, 3.0);
+        Box cube = new Box(5.0); // Uses the one-parameter constructor
+
+        // Calculate and print volumes
+        System.out.println("Volume of Box 1: " + box1.volume());
+        System.out.println("Volume of Cube: " + cube.volume());
+
+        // Check if boxes are identical
+        System.out.println("\nIs Box 1 identical to Box 2? " + box1.equals(box2));
+        System.out.println("Is Box 1 identical to Cube? " + box1.equals(cube));
+    }
+}
