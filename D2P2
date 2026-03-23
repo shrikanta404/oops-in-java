@@ -1,0 +1,40 @@
+class Time {
+    private int hour;
+    private int min;
+    private int sec;
+
+    // Constructor to assign values
+    public Time(int hour, int min, int sec) {
+        this.hour = hour;
+        this.min = min;
+        this.sec = sec;
+    }
+
+    // Method to add another Time object to the calling object
+    public void add(Time t) {
+        int totalSec = this.sec + t.sec;
+        int finalSec = totalSec % 60;
+        int carryMin = totalSec / 60;
+
+        int totalMin = this.min + t.min + carryMin;
+        int finalMin = totalMin % 60;
+        int carryHour = totalMin / 60;
+
+        int finalHour = this.hour + t.hour + carryHour;
+
+        System.out.println("Time 1: " + this.hour + "h " + this.min + "m " + this.sec + "s");
+        System.out.println("Time 2: " + t.hour + "h " + t.min + "m " + t.sec + "s");
+        System.out.println("Added Time: " + finalHour + "h " + finalMin + "m " + finalSec + "s");
+    }
+}
+
+public class TimeMain {
+    public static void main(String[] args) {
+        // Declare two Time objects using the constructor
+        Time t1 = new Time(2, 45, 50);
+        Time t2 = new Time(1, 20, 30);
+
+        // Call the add method
+        t1.add(t2);
+    }
+}
