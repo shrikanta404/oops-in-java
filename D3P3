@@ -1,0 +1,31 @@
+public class Average {
+    // Method using varargs (double... values)
+    void calculate(double... numbers) {
+        if (numbers.length == 0) {
+            System.out.println("No numbers provided.");
+            return;
+        }
+
+        double sum = 0;
+        for (double n : numbers) {
+            sum += n;
+        }
+        
+        double avg = sum / numbers.length;
+        System.out.println("The average is: " + avg);
+    }
+
+    public static void main(String[] args) {
+        Average obj = new Average();
+
+        // Testing with different sets of values
+        System.out.print("Set 1 (10, 20, 30): ");
+        obj.calculate(10.0, 20.0, 30.0);
+
+        System.out.print("Set 2 (5.5, 10.5): ");
+        obj.calculate(5.5, 10.5);
+
+        System.out.print("Set 3 (1, 2, 3, 4, 5): ");
+        obj.calculate(1, 2, 3, 4, 5);
+    }
+}
