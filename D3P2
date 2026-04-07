@@ -1,0 +1,40 @@
+class Person {
+    private String name;
+    private int age;
+
+    // Outer class constructor
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Non-static Inner Class
+    class Address {
+        String city;
+        int pinCode;
+
+        Address(String city, int pinCode) {
+            this.city = city;
+            this.pinCode = pinCode;
+        }
+
+        void display() {
+            // Accessing outer class private variables (name, age)
+            System.out.println("Name: " + name);
+            System.out.println("Age: " + age);
+            System.out.println("City: " + city);
+            System.out.println("Pincode: " + pinCode);
+        }
+    }
+
+    public static void main(String[] args) {
+        // 1. Create outer class object
+        Person p = new Person("John Doe", 25);
+        
+        // 2. Create inner class object using the outer class instance
+        Person.Address addr = p.new Address("Kolkata", 700001);
+        
+        // 3. Display details
+        addr.display();
+    }
+}
