@@ -1,0 +1,12 @@
+public class CountAndPrintArgs {
+    public static void main(String[] args) {
+        // Print the number of arguments
+        System.out.println("No. of arguments - " + args.length);
+
+        // Loop through each argument and print the first character
+        for (String s : args) {
+            System.out.print(s.charAt(0));
+        }
+        System.out.println(); // For a clean newline at the end
+    }
+}
