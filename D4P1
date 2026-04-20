@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+class vehicle {
+    protected String Licence_number, color, owner_name;
+    protected double speed;
+
+    void showdata() {
+        System.out.println("\nThis is a vehicle class");
+        System.out.println("Licence: " + Licence_number + " | Speed: " + speed + " | Color: " + color + " | Owner: " + owner_name);
+    }
+}
+
+class Bus extends vehicle {
+    private String route_no;
+
+    Bus(String l, double s, String c, String o, String r) {
+        Licence_number = l; speed = s; color = c; owner_name = o; route_no = r;
+    }
+
+    @Override
+    void showdata() {
+        super.showdata(); // Calls the parent method
+        System.out.println("Bus Route No: " + route_no);
+    }
+}
+
+class Car extends vehicle {
+    private String manufacturer_name;
+
+    Car(String l, double s, String c, String o, String m) {
+        Licence_number = l; speed = s; color = c; owner_name = o; manufacturer_name = m;
+    }
+
+    @Override
+    void showdata() {
+        super.showdata(); // Calls the parent method
+        System.out.println("Car Manufacturer: " + manufacturer_name);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("--- Enter Bus Details ---");
+        System.out.print("Licence, Speed, Color, Owner, Route: ");
+        Bus b = new Bus(sc.next(), sc.nextDouble(), sc.next(), sc.next(), sc.next());
+        
+        System.out.println("\n--- Enter Car Details ---");
+        System.out.print("Licence, Speed, Color, Owner, Manufacturer: ");
+        Car c = new Car(sc.next(), sc.nextDouble(), sc.next(), sc.next(), sc.next());
+
+        b.showdata();
+        c.showdata();
+    }
+}
