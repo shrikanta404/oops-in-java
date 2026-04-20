@@ -1,0 +1,76 @@
+import java.util.Scanner;
+
+// Interface attributes in Java are implicitly public, static, and final
+interface Department {
+    String depName = "Computer Science"; // Example constant attribute
+    String depHead = "Dr. Smith";
+
+    void getDeptData();
+    void printDeptData();
+}
+
+class Hostel {
+    protected String hostelName;
+    protected String hostelLocation;
+    protected int noOfRooms;
+
+    void getHostelData(Scanner sc) {
+        System.out.print("Enter Hostel Name: ");
+        hostelName = sc.nextLine();
+        System.out.print("Enter Location: ");
+        hostelLocation = sc.nextLine();
+        System.out.print("Enter Number of Rooms: ");
+        noOfRooms = sc.nextInt();
+        sc.nextLine(); // Clear buffer
+    }
+
+    void printHostelData() {
+        System.out.println("Hostel: " + hostelName + " | Location: " + hostelLocation + " | Rooms: " + noOfRooms);
+    }
+}
+
+class Student extends Hostel implements Department {
+    private String studentName;
+    private String regNo;
+    private String electiveSubject;
+    private double avgMarks;
+
+    // Implementing Department Interface methods
+    public void getDeptData() {
+        // Attributes are final in interfaces, so we just acknowledge them here
+        System.out.println("Department data initialized from Interface.");
+    }
+
+    public void printDeptData() {
+        System.out.println("Dept Name: " + depName + " | Dept Head: " + depHead);
+    }
+
+    void getStudentData(Scanner sc) {
+        getHostelData(sc); // Get parent class data
+        System.out.print("Enter Student Name: ");
+        studentName = sc.nextLine();
+        System.out.print("Enter Reg No: ");
+        regNo = sc.nextLine();
+        System.out.print("Enter Elective Subject: ");
+        electiveSubject = sc.nextLine();
+        System.out.print("Enter Average Marks: ");
+        avgMarks = sc.nextDouble();
+    }
+
+    void printStudentData() {
+        System.out.println("\n--- Final Student Report ---");
+        System.out.println("Name: " + studentName + " | Reg No: " + regNo);
+        System.out.println("Elective: " + electiveSubject + " | Avg Marks: " + avgMarks);
+        printHostelData();
+        printDeptData();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Student s = new Student();
+        s.getStudentData(sc);
+        s.printStudentData();
+    }
+}
