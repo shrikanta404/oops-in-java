@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+class Shape {
+    // Parallelepiped (3 parameters)
+    void calculate(double l, double b, double h) {
+        double vol = l * b * h;
+        double sa = 2 * (l * b + l * h + b * h);
+        System.out.println("Parallelepiped -> Volume: " + vol + ", Surface Area: " + sa);
+    }
+
+    // Cylinder (2 parameters)
+    void calculate(double r, double h) {
+        double vol = Math.PI * r * r * h;
+        double sa = 2 * Math.PI * r * (r + h);
+        System.out.println("Cylinder -> Volume: " + vol + ", Surface Area: " + sa);
+    }
+
+    // Sphere (1 parameter)
+    void calculate(double r) {
+        double vol = (4.0/3.0) * Math.PI * Math.pow(r, 3);
+        double sa = 4 * Math.PI * r * r;
+        System.out.println("Sphere -> Volume: " + vol + ", Surface Area: " + sa);
+    }
+}
+
+// Inheritance: Calculation class inherits from Shape
+class Geometry extends Shape {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Geometry geo = new Geometry();
+
+        System.out.print("Enter Parallelepiped L, B, H: ");
+        geo.calculate(sc.nextDouble(), sc.nextDouble(), sc.nextDouble());
+
+        System.out.print("Enter Cylinder Radius and Height: ");
+        geo.calculate(sc.nextDouble(), sc.nextDouble());
+
+        System.out.print("Enter Sphere Radius: ");
+        geo.calculate(sc.nextDouble());
+    }
+}
