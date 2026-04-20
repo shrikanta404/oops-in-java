@@ -1,0 +1,76 @@
+import java.util.*;
+
+class vehical {
+	protected String Licence_number;
+	protected int speed;
+	protected String color;
+	protected String owner_name;
+	
+	vehical(String lic , int s,String c, String o){
+		this.Licence_number = lic;
+		this.speed = s;
+		this.color = c;
+		this.owner_name = o;
+	}
+	
+	void showdata(){
+		System.out.println("this is vehical class");
+		System.out.println("Licence:" + Licence_number + ",speed:"+speed+ ", color" + color+ ", Owner:" + owner_name );
+		
+	}
+}
+class Bus extends vehical{
+	private int route_no;
+	Bus(String lic , int s,String c, String o,int route){
+		super(lic ,s,c,o);
+		this.route_no = route;
+	}
+	
+	@Override
+	void showdata(){
+		super.showdata();
+		System.out.println("Route number " + route_no);
+	}
+}
+
+class Car extends vehical{
+	private String manufacturer_name;
+	Car(String lic , int s,String c, String o,String mfg){
+		super(lic ,s,c,o);
+		this.manufacturer_name = mfg;
+	}
+	
+	@Override
+	void showdata(){
+		super.showdata();
+		System.out.println("Manufacturer " + manufacturer_name);
+	}
+}
+
+public class cardetails{
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("Licence_number");
+		String l = sc.nextLine();
+		System.out.print("speed:");
+		int s = sc.nextInt();
+		sc.nextLine();
+		System.out.print("color: ");
+		String c = sc.nextLine();
+		System.out.print("Owner_name: ");
+		String o = sc.nextLine();
+		System.out.print("Enter Route Number: ");
+        		int r = sc.nextInt();
+        		sc.nextLine();
+        		System.out.print("manufacturer name: ");
+        		String m = sc.nextLine();
+		
+		Bus b = new Bus( l,s,c,o,r);
+		System.out.println("---Bus Info---");
+		b.showdata();
+		Car C = new Car(l,s,c,o,m);
+		System.out.print("---car info---");
+		C.showdata();
+	}
+}
