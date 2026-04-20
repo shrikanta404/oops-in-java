@@ -1,0 +1,31 @@
+import Employee.Salaried;
+import java.util.Scanner;
+
+public class Trainee extends Salaried {
+    String trainingDomain;
+    int joiningYear; // Used for the "joined more than 1 yr before" logic
+    double trainingScore;
+
+    @Override
+    public void getdata(Scanner sc) {
+        super.getdata(sc); // Get basic employee data
+        System.out.print("Enter Training Domain: "); trainingDomain = sc.nextLine();
+        System.out.print("Enter Joining Year (e.g. 2024): "); joiningYear = sc.nextInt();
+        System.out.print("Enter Training Score: "); trainingScore = sc.nextDouble();
+    }
+
+    public void checkEligibility() {
+        // Current year is 2026 based on system time
+        if ((2026 - joiningYear) > 1 && trainingScore > 80) {
+            System.out.println("Eligible Trainee: " + empName);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Trainee t = new Trainee();
+        t.getdata(sc);
+        System.out.println("\n--- Trainee Result ---");
+        t.checkEligibility();
+    }
+}
