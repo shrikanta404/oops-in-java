@@ -1,0 +1,24 @@
+class NoMatchFoundException extends Exception {
+	public NoMatchFoundException(String message) {
+		super(message);
+	}
+}
+public class StringMatcher{
+	public static void main(String[] args){
+		String testInput = "University";
+		try {
+			checkString(testInput);
+			System.out.println("Match Found ");
+		}
+		catch (NoMatchFoundException e){
+			System.out.println("Exception: " +e.getMessage());
+		}
+	}
+	public static void checkString(String str) throws NoMatchFoundException{
+		if(!str.equals("University")){
+			throw new NoMatchFoundException("The string " +str + " does not match 'university' ");
+			
+		}
+	}
+	
+}
