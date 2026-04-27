@@ -1,0 +1,29 @@
+class CharTracker {
+	private int totalCharacters = 0;
+	public void addCharacter(char c ) throws IllegalArgumentException{
+		if (!Character.isLetter(c)){
+			throw new IllegalArgumentException("Invalid input: " + c + "is not an alphabetic character");
+		}
+		totalCharacters++;
+		System.out.println("Added:" + c + " Running total: " +totalCharacters);
+	}
+	
+	public int getTotal() {
+		return totalCharacters;
+	}
+}
+public class CharCount{
+	public static void main(String[] args){
+		CharTracker tracker = new CharTracker();
+		char[] inputs = {'j','k','l','q','o','6'};
+		try{
+			for(char ch : inputs){
+				tracker.addCharacter(ch);
+			}
+		}
+		catch (IllegalArgumentException e){
+			System.out.println("Stopped: " + e.getMessage());
+		}
+		System.out.println("Final valid count: " +tracker.getTotal());
+	}
+}
