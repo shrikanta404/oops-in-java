@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+// Functional Interface
+interface Finder {
+    int findMax(int a, int b);
+}
+
+public class LambdaMax {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // Lambda implementation of the 'findMax' method
+        Finder maxFinder = (a, b) -> (a > b) ? a : b;
+
+        System.out.print("Enter two numbers: ");
+        int n1 = sc.nextInt();
+        int n2 = sc.nextInt();
+
+        int result = maxFinder.findMax(n1, n2);
+        System.out.println("The maximum number is: " + result);
+    }
+}
