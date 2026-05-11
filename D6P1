@@ -1,0 +1,36 @@
+// Three base interfaces
+interface Alpha { void a1(); void a2(); }
+interface Beta { void b1(); void b2(); }
+interface Gamma { void g1(); void g2(); }
+
+// New interface inheriting from all three
+interface Combined extends Alpha, Beta, Gamma {
+    void newMethod();
+}
+
+// A concrete base class
+class BaseClass {
+    void baseDisplay() { System.out.println("Inside Base Class"); }
+}
+
+// Implementation class
+class MyClass extends BaseClass implements Combined {
+    public void a1() {} public void a2() {}
+    public void b1() {} public void b2() {}
+    public void g1() {} public void g2() {}
+    public void newMethod() { System.out.println("New Combined Method"); }
+
+    // Methods taking different interfaces as arguments
+    static void useAlpha(Alpha a) { System.out.println("Used Alpha"); }
+    static void useBeta(Beta b) { System.out.println("Used Beta"); }
+    static void useGamma(Gamma g) { System.out.println("Used Gamma"); }
+    static void useCombined(Combined c) { System.out.println("Used Combined"); }
+
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+        useAlpha(obj);
+        useBeta(obj);
+        useGamma(obj);
+        useCombined(obj);
+    }
+}
