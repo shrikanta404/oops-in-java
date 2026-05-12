@@ -1,0 +1,30 @@
+import org.shapes.*;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Choose shape: 1-Square  2-Triangle  3-Circle");
+        int choice = sc.nextInt();
+
+        if (choice == 1) {
+            System.out.print("Enter side: ");
+            Square s = new Square(sc.nextDouble());
+            System.out.println("Area = " + s.area());
+            System.out.println("Perimeter = " + s.perimeter());
+
+        } else if (choice == 2) {
+            System.out.print("Enter sides a, b, c and height: ");
+            Triangle t = new Triangle(sc.nextDouble(), sc.nextDouble(),
+                                      sc.nextDouble(), sc.nextDouble());
+            System.out.println("Area = " + t.area());
+            System.out.println("Perimeter = " + t.perimeter());
+
+        } else if (choice == 3) {
+            System.out.print("Enter radius: ");
+            Circle c = new Circle(sc.nextDouble());
+            System.out.println("Area = " + c.area());
+            System.out.println("Perimeter = " + c.perimeter());
+        }
+    }
+}
